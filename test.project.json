@@ -1,0 +1,21 @@
+{
+	"name": "Props-test",
+	
+	"tree": {
+		"$className": "DataModel",
+
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+
+			"Packages": {
+				"$className": "Folder",
+				"$ignoreUnknownInstances": true,
+
+				"Props": {
+					"$path": "default.project.json",
+					"$ignoreUnknownInstances": true
+				}
+			}
+		}
+	}
+}
