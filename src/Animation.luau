@@ -1,0 +1,36 @@
+local Props = require(script.Parent.Main)
+
+local AnimationProps = {}
+AnimationProps.__index = AnimationProps
+
+setmetatable(AnimationProps, Props)
+
+--------------------
+
+type self = {
+}
+
+export type AnimationProps = typeof(setmetatable({} :: self, AnimationProps)) & Props.Props
+
+--------------------
+
+function AnimationProps.new(storage: Instance, dump: Instance): AnimationProps
+    local self = Props.new(storage, dump)
+
+    setmetatable(self, AnimationProps)
+
+    return self
+end
+
+function AnimationProps.getAnimationTrack(self: AnimationProps, name: string, animator: Animator): AnimationTrack
+    local prop = Props.get(self, name)
+    local track = animator:LoadAnimation(prop)
+
+    prop:Destroy()
+
+    return track
+end
+
+--------------------
+
+return AnimationProps

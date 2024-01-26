@@ -14,22 +14,18 @@ export type SoundProps = typeof(setmetatable({} :: self, SoundProps)) & Props.Pr
 
 --------------------
 
-function SoundProps.new(storage: Instance): SoundProps
-    local self = Props.new(storage, workspace)
+function SoundProps.new(storage: Instance, dump: Instance): SoundProps
+    local self = Props.new(storage, dump)
 
     setmetatable(self, SoundProps)
 
     return self
 end
 
-function SoundProps.play(self: SoundProps, name: string, volume: number?, pitch: NumberRange?, parent: Instance?): Sound
+function SoundProps.play(self: SoundProps, name: string, volume: number?, pitch: NumberRange?): Sound
     volume = volume or 1
 
     local prop = self:get(name)
-
-    if parent then
-        prop.Parent = parent
-    end
 
     if pitch then
         prop.PlaybackSpeed = math.random(pitch.Min, pitch.Max)
