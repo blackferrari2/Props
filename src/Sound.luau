@@ -3,8 +3,6 @@ local Props = require(script.Parent.Main)
 local SoundProps = {}
 SoundProps.__index = SoundProps
 
-setmetatable(SoundProps, Props)
-
 --------------------
 
 type self = {
@@ -39,5 +37,7 @@ function SoundProps.play(self: SoundProps, name: string, volume: number?, pitch:
 end
 
 --------------------
+
+setmetatable(SoundProps, Props)
 
 return SoundProps

@@ -3,8 +3,6 @@ local Props = require(script.Parent.Main)
 local AnimationProps = {}
 AnimationProps.__index = AnimationProps
 
-setmetatable(AnimationProps, Props)
-
 --------------------
 
 type self = {
@@ -32,5 +30,7 @@ function AnimationProps.getAnimationTrack(self: AnimationProps, name: string, an
 end
 
 --------------------
+
+setmetatable(AnimationProps, Props)
 
 return AnimationProps

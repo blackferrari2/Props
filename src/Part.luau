@@ -3,8 +3,6 @@ local Props = require(script.Parent.Main)
 local PartProps = {}
 PartProps.__index = PartProps
 
-setmetatable(PartProps, Props)
-
 --------------------
 
 type self = {
@@ -35,5 +33,7 @@ function PartProps.get(self: PartProps, name: string): BasePart
 end
 
 --------------------
+
+setmetatable(PartProps, Props)
 
 return PartProps
