@@ -1,7 +1,7 @@
 local Main = require(script.Main)
-local Part = require(script.Part)
-local Sound = require(script.Sound)
-local Animation = require(script.Animation)
+local Part = require(script.Presets.Part)
+local Sound = require(script.Presets.Sound)
+local Animation = require(script.Presets.Animation)
 
 --------------------
 

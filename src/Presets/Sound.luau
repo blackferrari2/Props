@@ -1,4 +1,6 @@
-local Props = require(script.Parent.Main)
+local src = script.Parent.Parent
+
+local Props = require(src.Main)
 
 local SoundProps = {}
 SoundProps.__index = SoundProps
@@ -12,8 +14,8 @@ export type SoundProps = typeof(setmetatable({} :: self, SoundProps)) & Props.Pr
 
 --------------------
 
-function SoundProps.new(storage: Instance, dump: Instance): SoundProps
-    local self = Props.new(storage, dump)
+function SoundProps.new(storage: Instance): SoundProps
+    local self = Props.new(storage, storage, true)
 
     setmetatable(self, SoundProps)
 
@@ -29,9 +31,8 @@ function SoundProps.play(self: SoundProps, name: string, volume: number?, pitch:
         prop.PlaybackSpeed = math.random(pitch.Min, pitch.Max)
     end
 
-    prop.PlayOnRemove = true
     prop.Volume = volume
-    prop:Destroy()
+    prop:Play()
 
     return prop
 end

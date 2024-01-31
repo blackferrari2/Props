@@ -1,4 +1,6 @@
-local Props = require(script.Parent.Main)
+local src = script.Parent.Parent
+
+local Props = require(src.Main)
 
 local PartProps = {}
 PartProps.__index = PartProps

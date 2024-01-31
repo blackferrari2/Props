@@ -8,6 +8,7 @@ Props.__index = Props
 type self = {
     storage: Instance,
     dump: Instance,
+    dontClonePropsFlag: boolean?,
 }
 
 export type Props = typeof(setmetatable({} :: self, Props))
@@ -20,10 +21,11 @@ local ERROR_CANT_FIND_PROP = "cant find prop %s"
 
 -- storage: where you store props
 -- dump: where to put cloned props
-function Props.new(storage: Instance, dump: Instance): Props
+function Props.new(storage: Instance, dump: Instance, dontClonePropsFlag: boolean?): Props
     local self = {
         storage = storage,
         dump = dump,
+        dontClonePropsFlag = dontClonePropsFlag,
     }
 
     setmetatable(self, Props)
@@ -38,8 +40,10 @@ function Props.get(self: Props, name: string): Instance
         error(string.format(ERROR_CANT_FIND_PROP, name))
     end
 
-    prop = prop:Clone()
-    prop.Parent = self.dump
+    if not self.dontClonePropsFlag then
+        prop = prop:Clone()
+        prop.Parent = self.dump
+    end
 
     return prop
 end
