@@ -22,7 +22,7 @@ function ParticleProps.new(storage: Instance, dump: Instance): ParticleProps
     return self
 end
 
-function ParticleProps.attachment(self: ParticleProps): Attachment
+function ParticleProps.createAttachment(self: ParticleProps): Attachment
     local attachment = Instance.new("Attachment")
 
     attachment.Parent = self.dump

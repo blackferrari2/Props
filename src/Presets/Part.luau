@@ -43,6 +43,7 @@ function PartProps.createEmpty(cframe: CFrame?): Part
     part.CanCollide = false
     part.Transparency = 1
     part.Anchored = true
+    part.Parent = workspace
 
     if cframe then
         part.CFrame = cframe
