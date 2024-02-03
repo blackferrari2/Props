@@ -34,6 +34,23 @@ function PartProps.get(self: PartProps, name: string): BasePart
     return prop
 end
 
+--
+
+function PartProps.createEmpty(cframe: CFrame?): Part
+    local part = Instance.new("Part")
+
+    part.CanQuery = false
+    part.CanCollide = false
+    part.Transparency = 1
+    part.Anchored = true
+
+    if cframe then
+        part.CFrame = cframe
+    end
+
+    return part
+end
+
 --------------------
 
 setmetatable(PartProps, Props)
